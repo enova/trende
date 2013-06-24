@@ -1,0 +1,37 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: trende_production
+  pool: 5
+  username: username
+  host: localhost
+  port: 5432
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: trende_development
+  pool: 5
+  username: username
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: trende_development
+  pool: 5
+  username: username
+  host: localhost
+  port: 5432
+
+
+#EXTERNAL DATABASES
+#Used for populating data into trende
+external_db_name:
+  username: your_username_here
+  hostname: server_hostname_here
+  port: port_address_here
+
+#repeat this entry as needed for other databases
+#password expected in .pgpass file

@@ -1,0 +1,332 @@
+@import "colors";
+/******************/
+/* global styles */
+/****************/
+
+body { background-color: $bg; height: 1000px;}
+div :not(body) { border-radius: 5px; }
+h2 { color: #ffffff; }
+
+.main_element_border {
+  background: white;
+  padding: 10px;
+  box-shadow: 1px 1px 5px black;
+  margin-left: 10px;
+}
+.label_border{
+  padding: 5px;
+  width: 80px;
+  cursor: default;
+  text-shadow: 1px 1px 2px black;
+  /*background: $green;
+  box-shadow: 1px 1px 3px black;*/
+}
+#heatmap_half, #statistics_half, #graphs { margin: 0px;}
+
+
+/**************/
+/* title bar */
+/************/
+#heatmap_title {
+	padding-left: 10px;
+	width: 98%;
+	h2 {
+		margin-bottom: 4px;
+		margin-top: 10px;
+		text-shadow: 1px 1px 2px black;
+		font-size: 48px;
+    a{
+      color: white;
+      &:hover { text-decoration: none; }
+    }
+	}
+}
+
+.lightbluetext {
+  color: $light_blue;
+}
+
+#margin {
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  width: 100%;
+  height: 5px;
+}
+
+
+/*****************/
+/* heatmap half */
+/***************/
+$map_height: 652px;
+#map-canvas {
+  width: 100%;
+  height: $map_height;
+  text-align: center;
+}
+#map {
+  width: 95%;
+  height: $map_height;
+  z-index: 14;
+  position: relative;
+}
+#map-canvas img { max-width: none; }
+.btn-lightblue {
+  font-weight:bold;
+  background-color: hsl(195, 95%, 39%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#33c8f9", endColorstr="#0492c1");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#33c8f9), to(#0492c1));
+  background-image: -moz-linear-gradient(top, #33c8f9, #0492c1);
+  background-image: -ms-linear-gradient(top, #33c8f9, #0492c1);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #33c8f9), color-stop(100%, #0492c1));
+  background-image: -webkit-linear-gradient(top, #33c8f9, #0492c1);
+  background-image: -o-linear-gradient(top, #33c8f9, #0492c1);
+  background-image: linear-gradient(#33c8f9, #0492c1);
+  border-color: #0492c1 #0492c1 hsl(195, 95%, 34%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
+.locations{
+  width: auto;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.latest_locations{
+  margin-left: 10px;
+  li{
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 10px;
+    box-shadow: 1px 2px 2px black;
+    background: $grey;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 14;
+    &:hover{
+      cursor: pointer;
+      background: lighten($grey, 10%);
+    }
+  }
+  .active{
+    background: $light_blue;
+    &:hover{
+      background: lighten($light_blue, 10%);
+    }
+  }
+}
+.cancel_button {
+  opacity: 0;
+  width: 15px;
+  height: 15px;
+  margin: -10px -20px 10px 5px;
+  z-index: 15;
+  position: relative;
+  transition: all 0.2s;
+}
+.location:hover > .cancel_button {
+   opacity: 1;
+}
+
+.recent_title{
+  color: white;
+  text-shadow:0 -1px 0 #000000;
+  margin-left: 10px;
+  width: 80px;
+  text-align: left;
+  letter-spacing: 0.5px;
+  float: left;
+}
+
+
+/********************/
+/* heatmap overbar */
+/******************/
+
+#geocoder {
+  margin-left: 10px;
+  margin-bottom: 0px;
+  margin-right: -10px;
+  display: inline-block;
+}
+#geocode_label { width: 16%; }
+
+#loading_div {
+  position: absolute;
+  top: 0;
+  margin-top: 44%;
+  margin-left: 47%;
+  width: 40px;
+  height: 40px;/*
+  display: inline-block;
+  margin: -11px 0px 0px 20px;*/
+  z-index: 20;
+}
+
+#settings_button {
+  width: 50px;
+  height: 50px;
+  margin-right: -5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+#submit {
+  margin-left: 5px;
+  float: none;
+  display: inline;
+}
+
+/****************/
+/* tabbed pane */
+/**************/
+#graph_selector {
+  margin: 5px;
+  margin-top: 0px;
+  margin-bottom: 70px;
+  height: 25%;
+  width: 100%;
+  cursor: pointer;
+  margin-left: -2px;
+}
+.graph_button {
+  text-align: center;
+  background: #555555;
+  color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  height: 50px;
+  width: 25%;
+  box-shadow: 2px 2px 5px black;
+  font-size: 18px;
+  line-height: 50px;
+}
+
+.selected {
+  background: #0db7f9;
+}
+
+/***********************/
+/* statistics graphs  */
+/*********************/
+#statistics_half { height: 500px; margin-left:1%;}
+#visualization {
+  height: 500px;
+  max-height: 700px;
+  z-index: 14;
+  position: relative;
+}
+
+.graph, .overlay, {
+  background: white;
+  height: 475px;
+  z-index: 14;
+}
+.overlay, #meter, #no_data {
+  display: none;
+  position: absolute;
+  top: 0;
+}
+#meter, #no_data {
+  margin-top: 33%;
+  height: 10px;
+  z-index: 20;
+  left: 0;
+}
+#no_data {
+  font-size: 60px;
+  text-align: center;
+  width:100%;
+}
+
+#meter {
+  margin-left:18%;
+  width: 64%;
+}
+
+#map_overlay {
+  opacity: 0;
+  margin-top: 0px;
+  width: 98%;
+  height: $map_height + 10px;
+}
+#graph_overlay {
+  opacity: 0.8;
+  margin-top: 45px;
+  width: 100%;
+  height: 455px;
+}
+.slider.ui-slider { min-height: 10px; margin-top: 5px;}
+.slider_label.span2 {
+  height: 10px;
+  font-size: 11px;
+  width: 84px;
+}
+#pie_slider { background: #0db7f9; }
+#bar_slider { background: #0db7f9; }
+#area_slider { background: #0db7f9; }
+
+.ui-slider-legend {
+  margin-left: -25px;
+  padding: 0px;
+  padding-left: 15px;
+  padding-top: 5px;
+  width: 820px;
+  height: 20px;
+  background: white;
+}
+
+a.ui-slider-handle {
+  text-decoration: none;
+  text-align: center;
+}
+
+.ui-multiselect span:not(.ui-icon) {
+  width: 200px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**************************/
+/* Hidden settings panel */
+/************************/
+#settings_form {
+  margin-bottom:10px;
+  form {
+    margin-bottom: 10px;
+    label:not(#geocode_label){
+      font-size: 15px;
+      margin-right: 7px;
+      color: #ffffff;
+      display: inline-block;
+
+      span { display: inline-block; }
+      input { width: 194px; }
+      .input-append.date input{ width: 190px; }
+      input.date { width: 115px; }
+      #start_date { width: 165px;}
+    }
+  }
+}
+#auto_refresh {
+  width: 13px!important;
+}
+#auto_refresh_label {
+  margin-left: -5px;
+  width: 25px;
+}
+.ui-multiselect.ui-widget.ui-state-default.ui-corner-all {
+    width: 207px!important;
+}
+.ui-multiselect span:not(.ui-icon) {
+    width: 184px;
+}

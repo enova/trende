@@ -1,0 +1,68 @@
+.container-fluid
+  .row-fluid
+    #heatmap_title.row-fluid
+      %h2=link_to "trend<span class='lightbluetext'>&#275;</span>".html_safe, root_url
+    #margin
+    #heatmap_half.span6
+      %form#geocode_form.row-fluid
+        #geocoder.form-search.main_element_border.span10.row-fluid
+          %input#geocode.span10.input-medium.search-query{:type => "text", :maxlength => '80'}
+          %button#submit.span2.btn.btn-lightblue{:type => 'submit'} Go
+        %img#settings_button.main_element_border.span1{:src => "/assets/tools.png"}
+      .locations
+        %ul.latest_locations
+          %li.location.active.pinned{"data-location" => "US"} US
+          %li.location.pinned{"data-location" => "UK"} UK
+          %li.location{"data-location" => "Texas"} Texas
+          %li.location{"data-location" => "Ohio"} Ohio
+          %li.location{"data-location" => "California"} California
+      #map.row-fluid.main_element_border
+        #map-canvas
+      #loading_div
+        %img#loading{:src => "/assets/loader.gif"}
+    #statistics_half.span6
+      .row-fluid
+        #settings_form.row-fluid
+          %form#filters.form-horizontal
+            .span6
+              %label#start_datetimepicker
+                %span#start_label.label_border{:for => 'start_datetimepicker'} From
+                %input#start_date.date{:type => "text", :name => "start_date", :value => (Time.now - 2.months).strftime("%Y-%m-%d %H:%M")}
+                #start_date_input.input-append.date
+                  %input#hidden_start_date{:type => "hidden", "data-format" => "yyyy-MM-dd hh:mm"}
+                  %span#start_button.add-on
+                    %i{"data-time-icon" => "icon-time", "data-date-icon" => "icon-calendar"}
+              %label#lower_bound_group
+                %span.label_border{:for => 'lower_bound', :id => 'lower_bound_label'}= get_label('default','lower_bound')
+                %input{:id => 'lower_bound', :type => 'number', :onkeypress => "return isNumberKey(event)", :value => 0, :placeholder => 0}
+              -@filters.keys.drop(@filters.length/2).each do |key|
+                %label
+                  %span.label_border{:for => key, :id => key.to_s+'_label'}= get_label('default',key)
+                  %select{:name => key, :id => key, :multiple => 'multiple'}
+                    -@filters[key].each do |option|
+                      %option{value: option[:value], selected:'selected'}=option[:name]
+            .span6
+              %label#end_datetimepicker
+                %span#end_label.label_border{:for => 'start_datetimepicker'} To
+                %input#end_date.date{:type => "text", :name => "end_date", :value => Time.now.strftime("%Y-%m-%d %H:%M")}
+                #end_date_input.input-append.date
+                  %input#hidden_end_date{:type => "hidden", "data-format" => "yyyy-MM-dd hh:mm"}
+                  %span#end_button.add-on
+                    %i#icon{"data-time-icon" => "icon-time", "data-date-icon" => "icon-calendar"}
+              %label#auto_refresh_group
+                %input{id: 'auto_refresh', type: 'checkbox', name: 'auto_refresh', value: 'true'}
+                %span.label_border{:for => 'auto_refresh', :id => 'auto_refresh_label'} Now
+              %label#upper_bound_group
+                %span.label_border{:for => 'upper_bound', :id => 'upper_bound_label'}= get_label('default','upper_bound')
+                %input{:id => 'upper_bound', :type => 'number', :onkeypress => "return isNumberKey(event)", :value => 3500, :placeholder => 0}
+              -@filters.keys.take(@filters.length/2).each do |key|
+                %label
+                  %span.label_border{:for => key, :id => key.to_s+'_label'}= get_label('default',key)
+                  %select{:name => key, :id => key, :multiple => 'multiple'}
+                    -@filters[key].each do |option|
+                      %option{value: option[:value], selected:'selected'}=option[:name]
+      .row-fluid
+        #graph_selector
+        #graphs.main_element_border
+          #visualization.row-fluid
+
