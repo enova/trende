@@ -46,7 +46,9 @@ Data is loading using a formatted CSV. The format is as follows:
 Place that file in the data folder. Then, run the rake task used to populate
 the database:
 
-    rake heatmap:load_new_data[DATA_FILE_NAME.csv]
+    rake heatmap:load_new_data[DATA_FILE_NAME.csv,true/false]
+
+The true/false option is used to specify whether the events table should be 2 level partitioned on brand and year/month for performance improvements. This is set to true by default.
     
 ###Additional Notes
 Trende runs best in Chrome.
