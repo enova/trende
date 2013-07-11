@@ -31,8 +31,8 @@ namespace :trende do
         else
           args.with_defaults :should_partition => true
         end
-        Rake::Task['heatmap:clear_staging'].reenable
-        Rake::Task['heatmap:clear_staging'].invoke
+        Rake::Task['trende:clear_staging'].reenable
+        Rake::Task['trende:clear_staging'].invoke
         puts "--------------------**** Loading new data ****--------------------"
 
         data_file = args.csv_filename
@@ -60,7 +60,7 @@ namespace :trende do
       begin
         sh "rm #{data_file}_parsed.txt"
       rescue RuntimeError => e
-        puts "heatmap:load_new_data task failed with error: #{e}"
+        puts "trende:load_new_data task failed with error: #{e}"
       end
     end
   end
@@ -89,7 +89,7 @@ end
 namespace :db do
   desc "Warning: This drops your database, not just clears rows"
   task :hard_reset => [:drop, :create, :migrate, :seed] do
-    Rake::Task['heatmap:create_indices'].invoke
+    Rake::Task['trende:create_indices'].invoke
   end
 end
 
