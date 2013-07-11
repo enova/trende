@@ -1,4 +1,4 @@
-namespace :heatmap do
+namespace :trende do
   desc "Clear staging table"
   task :clear_staging => :environment do
     puts "--------------------**** Clearing Staging Table ****--------------------"
@@ -69,7 +69,6 @@ namespace :heatmap do
   task :create_indices => :environment do
     puts "---------------------**** Creating Indices ****-------------------"
     ActiveRecord::Base.connection.execute("create index postal_idx_loc on locations using btree(postal_code)")
-    ActiveRecord::Base.connection.execute("create index postal_idx_evn on events using btree(location_id)")
     puts "---------------------**** Indices created ****-------------------"
   end
 
@@ -77,8 +76,6 @@ namespace :heatmap do
   task :drop_indices => :environment do
     puts "---------------------**** Dropping Indices ****-------------------"
     ActiveRecord::Base.connection.execute("drop index postal_idx_loc")
-    ActiveRecord::Base.connection.execute("drop index postal_idx_stg")
-    ActiveRecord::Base.connection.execute("drop index postal_idx_evn")
     puts "---------------------**** Indices dropped ****-------------------"
   end
 
@@ -126,6 +123,9 @@ end
 
 def create_brand_month_partition(adjusted_month, adjusted_year, brand, pg_connection, two_digit_month, year)
   pg_connection.execute("create table events_brand_#{brand}_y#{year}m#{two_digit_month} (check (time_stamp >= DATE '#{year}-#{two_digit_month}-01' and time_stamp < DATE '#{adjusted_year}-#{adjusted_month.to_i+1}-01')) inherits (events_brand_#{brand})")
+  pg_connection.execute("create index events_brand_#{brand}_y#{year}m#{two_digit_month}_mag_idx on events_brand_#{brand}_y#{year}m#{two_digit_month} (magnitude)")
+  pg_connection.execute("create index events_brand_#{brand}_y#{year}m#{two_digit_month}_sec_attr_idx on events_brand_#{brand}_y#{year}m#{two_digit_month} (secondary_attribute)")
+  pg_connection.execute("create index events_brand_#{brand}_y#{year}m#{two_digit_month}_loc_idx on events_brand_#{brand}_y#{year}m#{two_digit_month} (location_id)")
 end
 
 def create_brand_partition(brand, pg_connection)
