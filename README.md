@@ -28,7 +28,7 @@ Do a quick bundle install:
     
 To get some locations on the map, use the randomly generated data in trende_data.csv
     
-    rake heatmap:load_new_data[trende_data.csv]
+    rake trende:load_new_data[trende_data.csv]
 
 Start up the server, and you're ready to go!
 
@@ -46,7 +46,7 @@ Data is loading using a formatted CSV. The format is as follows:
 Place that file in the data folder. Then, run the rake task used to populate
 the database:
 
-    rake heatmap:load_new_data[DATA_FILE_NAME.csv,true/false]
+    rake trende:load_new_data[DATA_FILE_NAME.csv,true/false]
 
 The true/false option is used to specify whether the events table should be 2 level partitioned on brand and year/month for performance improvements. This is set to true by default.
     
