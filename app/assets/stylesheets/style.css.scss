@@ -170,6 +170,93 @@ $map_height: 652px;
   z-index: 20;
 }
 
+#map_controls {
+  position: absolute;
+  bottom: -2%;
+  left: 2%;
+  width: 200px;
+  height: 150px;
+  z-index: 20;
+}
+
+#layer_controls {
+  position: absolute;
+  bottom: 15%;
+  left: 2%;
+  width: 200px;
+  height: 150px;
+  z-index: 20;
+}
+
+#new_layer {
+  float: none;
+}
+#delete_layer {
+  margin-left: 0;
+  clear:left;
+}
+
+#show_hide_controls {
+  position: absolute;
+  bottom: -5%;
+  left: 1%;
+  width: 116px;
+  height: 28px;
+  z-index: 20;
+}
+
+#movie_div, #play_div {
+  position: absolute;
+  bottom: 30px;
+  right: 32px;
+  width: 24px;
+  height: 32px;
+  font-weight: bolder;
+  font-size: 1.6em;
+  z-index: 20;
+  white-space: nowrap;
+  background: url('/assets/play.png') no-repeat 0px 0px;
+}
+
+#play_pause_div {
+  position: absolute;
+  bottom: 30px;
+  right: 14px;
+  width: 24px;
+  height: 32px;
+  font-weight: bolder;
+  font-size: 1.6em;
+  z-index: 20;
+  white-space: nowrap;
+  background: url('/assets/pause.png') no-repeat 0px 0px;
+}
+
+#forward_div {
+  position: absolute;
+  bottom: 30px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  font-weight: bolder;
+  font-size: 1.6em;
+  z-index: 20;
+  white-space: nowrap;
+  background: url('/assets/forward.png') no-repeat 0px 0px;
+}
+
+#back_div {
+  position: absolute;
+  bottom: 30px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  font-weight: bolder;
+  font-size: 1.6em;
+  z-index: 20;
+  white-space: nowrap;
+  background: url('/assets/last.png') no-repeat 0px 0px;
+}
+
 #settings_button {
   width: 50px;
   height: 50px;
@@ -182,6 +269,11 @@ $map_height: 652px;
   margin-left: 5px;
   float: none;
   display: inline;
+}
+
+/*Layer Controls*/
+.clickable {
+  cursor: pointer;
 }
 
 /****************/

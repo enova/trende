@@ -16,9 +16,11 @@ class Location < ActiveRecord::Base
 
   def self.get_locs_for options
     options.reverse_merge! defaults
-    Location.select(options[:fields])
+    locs = Location.select(options[:fields])
       .bound_lat(options[:south], options[:north])
       .bound_long(options[:west], options[:east])
+    locs = locs.order(options[:order]) unless options[:order].nil?
+    locs
   end
 
   protected

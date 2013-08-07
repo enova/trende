@@ -18,6 +18,24 @@
           %li.location{"data-location" => "California"} California
       #map.row-fluid.main_element_border
         #map-canvas
+        #layer_controls
+          #new_layer.clickable.graph_selector.graph_button.span4
+            &#43;
+          #delete_layer.clickable.graph_button.span4
+            &#45;
+        #map_controls
+          %input#color_picker1{:type => "text"}
+          %input#color_picker2{:type => "text"}
+          %input#color_picker3{:type => "text"}
+          #opacity_slider.slider.ui-slider-range
+          #radius_slider.slider.ui-slider-range
+          #intensity_slider.slider.ui-slider-range
+        #show_hide_controls.clickable
+          %button Toggle Controls
+        #movie_div.clickable
+        #play_pause_div.clickable
+        #forward_div.clickable
+        #back_div.clickable
       #loading_div
         %img#loading{:src => "/assets/loader.gif"}
     #statistics_half.span6

@@ -9,10 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
+ *= require bootstrap.css.scss
  *= require jquery.ui.all
  *= require bootstrap-responsive
  *= require bootstrap-datetimepicker.min
  *= require jquery.multiselect.css
+ *= require spectrum
  *= require style
  */

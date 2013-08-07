@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery.ui.all
-//= require bootstrap
 //= require bootstrap-datetimepicker.min
 //= require google-maps.js
 //= require jquery.multiselect.js
+//= require spectrum
+//= require mouserepeat
 //= require_tree .
