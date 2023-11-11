@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'pry-rails'
-gem 'rspec-rails'
+gem 'rspec-rails', '>= 2.13.2'
 gem 'geocoder'
 gem 'haml'
 gem 'chronic'
