@@ -25,7 +25,7 @@ group :assets do
 end
 
 group :tests do
-  gem 'capybara'
+  gem 'capybara', '>= 2.2.0'
   gem 'launchy'
 end
 
